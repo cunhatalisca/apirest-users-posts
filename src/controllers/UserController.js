@@ -41,6 +41,21 @@ export default {
       return res.json({ error })
     }
    
+  },
+
+  async findUser(req, res) {
+    try {
+      const { id } = req.params
+      const user = await prisma.user.findUnique({
+        where: {id: Number(id)}
+      })
+
+      return res.json(users)
+
+    } catch (error) {
+      return res.json({ error })
+    }
+   
   }
 
 }
