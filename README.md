@@ -9,12 +9,12 @@
   <li><a href="#endpoint">Endpoint</a></li>
 
 <h2  id="Functionalities">📑Functionalities</h2>
-     <ul>
-      <h3>Technologies and tools 🖥️</h3>
-      <li>NodeJS</li>
-      <li>PostgreSQL</li>
-      <li>Express</li>
-      <li>Nodemon</li>
+<ul>
+<h3>Technologies and tools 🖥️</h3>
+<li>NodeJS</li>
+<li>PostgreSQL</li>
+<li>Express</li>
+<li>Nodemon</li>
   </ul>
      <h3>C.R.U.D (Create, Read, Update, Delete)</h3>
       <li>List all customers and posts</li>
