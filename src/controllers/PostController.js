@@ -30,4 +30,14 @@ export default {
       res.json({ message: error.message });
     }
   },
+
+  async findAllPost(req, res) {
+    try {
+      const post = await prisma.post.findMany()
+
+      return res.json(post)
+    } catch (error) {
+      return res.json({ error })
+    }
+  }
 };
