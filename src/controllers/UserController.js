@@ -3,6 +3,8 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default {
+
+  // criação de um usuário
   async createUser(req, res) {
     try {
       const { name, email } = req.body;
@@ -32,10 +34,11 @@ export default {
     }
   },
 
+  // listagem de todos os usuários
   async findAllUser(req, res) {
     try {
       const user = await prisma.user.findMany();
-      return res.json(users)
+      return res.json(user)
 
     } catch (error) {
       return res.json({ error })
@@ -43,6 +46,7 @@ export default {
    
   },
 
+  // procura de somente um usuário
   async findUser(req, res) {
     try {
       const { id } = req.params
@@ -50,12 +54,39 @@ export default {
         where: {id: Number(id)}
       })
 
-      return res.json(users)
+      if(!user) {
+        return res.json({error: "Não foi possível encontrar esse usuário"})
+      }
+
+      return res.json(user)
 
     } catch (error) {
       return res.json({ error })
     }
    
+  },
+
+  async updateUsers(req, res) {
+    try {
+      const { id } = req.params
+      const { name, email } = req.body
+
+      let user = await prisma.user.findUnique({
+        where: {id: Number(id)}
+      })
+
+      if(!user) {
+        return res.json({error: "Não foi possível encontrar esse usuário"})
+      }
+
+      user = await prisma.user.update({
+        where: { id },
+        data: { name, email }
+      })
+
+    } catch (error) {
+      
+    }
   }
 
 }
