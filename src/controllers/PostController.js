@@ -33,11 +33,34 @@ export default {
 
   async findAllPost(req, res) {
     try {
-      const post = await prisma.post.findMany()
+      const post = await prisma.post.findMany();
 
-      return res.json(post)
+      return res.json(post);
     } catch (error) {
-      return res.json({ error })
+      return res.json({ error });
     }
-  }
+  },
+
+  async updatePost(req, res) {
+    const { id } = req.params;
+
+    try {
+      let post = await prisma.post.findUnique({
+        where: { id: Number(id) },
+      });
+
+      if (!post) {
+        return res.json({ message: "Post inexistente" });
+      }
+
+      post = await prisma.post.update({
+        where: { id: Number(id) },
+        data: { content },
+      });
+
+      return res.json({ message: "Post atualizado com sucesso!" });
+    } catch (error) {
+      return res.json({ error });
+    }
+  },
 };
