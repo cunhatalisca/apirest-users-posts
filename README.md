@@ -24,7 +24,6 @@
       <li>Update information about a user or post</li>
 
       
-<details>
   <h1 id="endpoint">Endpoint</h1>
   ### Example of a request to register a user
   
@@ -44,7 +43,6 @@
   "created_at": "2023-07-11T12:10:22.0577"
 }
   ``` 
-</details>
 
  <h2 id="notes">Notes❗</h2>
   <p>This project is just a basic demonstration of a post register using Javascript NodeJS and Database. For learning and development purposes.</p>
