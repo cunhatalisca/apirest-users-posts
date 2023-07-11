@@ -40,7 +40,7 @@
 	"id": 1,
 	"nome": "gabriel",
 	"email": "gabriel@test.com",
-        "created_at": "2023-07-11T12:10:22.0577"
+    "created_at": "2023-07-11T12:10:22.0577"
 }
   ``` 
 
