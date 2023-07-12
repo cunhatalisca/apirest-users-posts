@@ -34,7 +34,7 @@
 }
   ```
   
-  ### Exemplo de Resposta
+  ### Example of response
   ```json
      {
 	"id": 1,
