@@ -43,6 +43,7 @@ export default {
 
   async updatePost(req, res) {
     const { id } = req.params;
+    const { content } = req.body
 
     try {
       let post = await prisma.post.findUnique({

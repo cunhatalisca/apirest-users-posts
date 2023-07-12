@@ -1,38 +1,20 @@
 import { Router } from "express";
-import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+import UserController from "./controllers/UserController";
+import PostController from "./controllers/PostController";
 
 const router = Router();
 
-// criação de um usuário
-router.post("/user", async (req, res) => {
-  try {
-    const { name, email } = req.body;
+// usuários
+router.post("/user", UserController.createUser );
+router.get("/users", UserController.findAllUser );
+router.get("/user/:id", UserController.findUser );
+router.put("/user/:id", UserController.updateUsers);
+router.delete("/user/:id", UserController.deleteUser);
 
-    // verificação pra saber se já existe um usuário com o e-mail
-    let user = await prisma.user.findUnique({
-      where: { email }
-    })
-
-    // verificando se um usuário existe com o e-mail cadastrado
-    if(user) {
-      return res.json({ error: 'Já existe um usuário com esse e-mail' })
-    }
-
-    user = await prisma.user.create({
-      data: {
-        name,
-        email,
-      },
-    });
-
-    return res.json(user);
-  } catch (error) {
-    return res.json({
-       error 
-    })
-  }
-});
+// posts
+router.post("post/user:id", PostController.createPost)
+router.get("posts", PostController.findAllPost)
+router.put("posts/:id", PostController.updatePost)
 
 export { router };

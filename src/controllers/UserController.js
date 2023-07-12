@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-
 const prisma = new PrismaClient();
 
 export default {
@@ -80,7 +79,7 @@ export default {
       }
 
       user = await prisma.user.update({
-        where: { id },
+        where: { id: Number(id) },
         data: { name, email }
       })
 
